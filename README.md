@@ -1,3 +1,3 @@
-# Sandbox Repository for Random Stuff
+# Reproducing Issue 3199 from WallabyJS
 
-Everything here exists on a branch, never to be merged to master.
+https://github.com/wallabyjs/public/issues/3199
