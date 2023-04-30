@@ -3,19 +3,31 @@
 // The output should follow the rules for FizzBuzz.
 // Create an array of length 20 populated with values from this generator.
 
-function* fizzbonacci(n) {
-    for (let i = 1; i <= n; i++) {
-        if (i % 3 === 0 && i % 5 === 0) {
+function* fizzbonacci(first: number, second: number): Generator<string> {
+    let current = second;
+    let previous = first;
+    while (true) {
+        const isFizz = current % 3 === 0;
+        const isBuzz = current % 5 === 0;
+        if (isFizz && isBuzz) {
             yield "FizzBuzz";
-        } else if (i % 3 === 0) {
+        } else if (isFizz) {
             yield "Fizz";
-        } else if (i % 5 === 0) {
+        } else if (isBuzz) {
             yield "Buzz";
         } else {
-            yield i;
+            yield current.toString();
         }
+        const next = current + previous;
+        previous = current;
+        current = next;
     }
 }
 
-const fizzbonacciGenerator = fizzbonacci(20);
-console.log(fizzbonacciGenerator.next().value);
+const result = [];
+const generator = fizzbonacci();
+for (let i = 0; i < 20; i++) {
+  result.push(generator.next().value);
+}
+
+console.log(result);
