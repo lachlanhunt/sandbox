@@ -1,3 +1,3 @@
-# Sandbox Repository for Random Stuff
+# Time Range demo
 
-Everything here exists on a branch, never to be merged to master.
+Example function to demonstrate how to collate a collection of time ranges
