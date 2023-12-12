@@ -53,3 +53,31 @@ const validGameNumbers = validGames.map(([gameNumber]) => gameNumber);
 const sum = validGameNumbers.reduce((acc, curr) => acc + curr, 0);
 
 console.log("Sum:", sum);
+
+// Part 2
+const minimumGameBalls = games.map(([gameNumber, sets]) => {
+    return [
+        gameNumber,
+        sets.reduce<Required<GameSet>>(
+            (acc, curr) => {
+                const red = Math.max(acc.red, curr.red ?? 0);
+                const green = Math.max(acc.green, curr.green ?? 0);
+                const blue = Math.max(acc.blue, curr.blue ?? 0);
+
+                return { red, green, blue };
+            },
+            { red: 0, green: 0, blue: 0 }
+        ),
+    ] as const;
+});
+
+// console.log(minimumGameBalls);
+
+const powerOfSets = minimumGameBalls.map(([, set]) => {
+    const { red, green, blue } = set;
+    return red * green * blue;
+});
+
+const totalPower = powerOfSets.reduce((acc, curr) => acc + curr, 0);
+
+console.log("Total power:", totalPower);
