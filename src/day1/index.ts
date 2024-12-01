@@ -27,4 +27,21 @@ for (let i = 0; i < numLines; i++) {
 
 const sum = c.reduce((acc, val) => acc + val, 0);
 
-console.log(sum);
+console.log("Sum of differences:", sum);
+
+// Part 2
+const counts = new Map<number, number>();
+// Count number of occurrences of each number in b
+for (const bVal of b) {
+    const count = counts.get(bVal) || 0;
+    counts.set(bVal, count + 1);
+}
+
+// Multiply each number in a by the number of times it occurs in b
+let sum2 = 0;
+for (const aVal of a) {
+    const count = counts.get(aVal) || 0;
+    sum2 += aVal * count;
+}
+
+console.log("Sum of products:", sum2);
