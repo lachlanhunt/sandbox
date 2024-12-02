@@ -6,7 +6,7 @@
             "files": ["*.ts", "*.tsx"],
             "parserOptions": {
                 "sourceType": "module",
-                "ecmaVersion": 2022,
+                "ecmaVersion": 2024,
                 "project": "./tsconfig.json"
             }
         }
