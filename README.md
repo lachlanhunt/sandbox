@@ -1,3 +1,3 @@
-# Sandbox Repository for Random Stuff
+# Advent of Code 2024 Challenges
 
-Everything here exists on a branch, never to be merged to master.
+[Advent of Code 2024](https://adventofcode.com/2024)
