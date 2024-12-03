@@ -5,23 +5,23 @@ import { readLines } from "../index";
 
 const lines = await readLines();
 
-function* getPairs<T>(arr: T[]): Generator<[T, T]> {
+export function* getPairs<T>(arr: T[]): Generator<[T, T]> {
     for (let i = 0; i < arr.length - 1; i++) {
         yield [arr[i], arr[i + 1]];
     }
 }
 
-function getLevels(line: string) {
+export function getLevels(line: string) {
     return line.split(" ").map(Number);
 }
 
-function* getLevelsFromLines(lines: string[]) {
+export function* getLevelsFromLines(lines: string[]) {
     for (let line of lines) {
         yield getLevels(line);
     }
 }
 
-export const isRecordSafe = (levels: number[]) => {
+export const isReportSafe = (levels: number[]) => {
     const pairs = getPairs(levels);
 
     let [a, b] = pairs.next().value;
@@ -42,11 +42,11 @@ export const isRecordSafe = (levels: number[]) => {
 
 let safeCount = 0;
 for (const levels of getLevelsFromLines(lines)) {
-    const isSafe = isRecordSafe(levels);
+    const isSafe = isReportSafe(levels);
 
     if (isSafe) {
         console.log(levels);
-        safeCount += isRecordSafe(levels) ? 1 : 0;
+        safeCount += isReportSafe(levels) ? 1 : 0;
     }
 }
 
