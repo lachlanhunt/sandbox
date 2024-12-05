@@ -1,5 +1,3 @@
-import { D } from "@vitest/runner/dist/tasks-3ZnPj1LR";
-
 type Graph = string[];
 type Direction = (typeof directions)[number];
 type Coordinates = [number, number];
@@ -65,23 +63,23 @@ function* take<T>(iterable: Iterable<T>, n: number): Generator<T> {
         if (next.done) {
             break;
         }
-        yield next.value; //?
+        yield next.value;
         i++;
     }
 }
 
 export const countWordFromCoords = (graph: Graph, coords: Iterable<Coordinates>) => {
-    let length = SEARCH_WORD.length; //?
+    let length = SEARCH_WORD.length;
     let count = 0;
     // Starting from the coordinates, get the sequence of coordinates in the direction
     for (const coordinate of coords) {
-        coordinate; //?
+        coordinate;
         for (const direction of directions) {
             const coordsInDirection = take(coordinatesFromDirection(graph, coordinate, direction), length);
-            const word = [...coordsInDirection].map(([row, col]) => graph[row][col]).join(""); //?
-            word; //?
+            const word = [...coordsInDirection].map(([row, col]) => graph[row][col]).join("");
+
             if (word === SEARCH_WORD) {
-                count++; //?
+                count++;
             }
         }
     }
@@ -94,9 +92,9 @@ export const getDiagonalWordsFromCoords = (graph: Graph, coordinates: Coordinate
 
     const adjacentLetters = adjacentDiagonals.reduce((accum, direction) => {
         const coordsInDirection = take(coordinatesFromDirection(graph, coordinates, direction), 2);
-        const list = [...coordsInDirection]; //?
+        const list = [...coordsInDirection];
         const letters = list.map(([row, col]) => graph[row][col]); //?
-        const letter = letters[1] ?? ""; //?
+        const letter = letters[1] ?? "";
         //     ^?
         accum.set(direction, letter);
         return accum;
