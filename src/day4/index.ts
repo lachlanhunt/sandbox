@@ -2,10 +2,13 @@
 // cat src/day4/input | yarn node --loader ts-node/esm src/day4/index.ts
 
 import { readLines } from "../index";
-import { countWordFromCoords, findXCoords } from "./graph";
+import { countValidXWordsFromCoords, countWordFromCoords, findLetterCoords } from "./graph";
 
 const graph = await readLines();
 
-const count = countWordFromCoords(graph, [...findXCoords(graph)]);
+const count = countWordFromCoords(graph, findLetterCoords(graph, "X"));
 
-console.log("Result:", count);
+const countXWords = countValidXWordsFromCoords(graph, findLetterCoords(graph, "A"));
+
+console.log("XMAS:", count);
+console.log("X-MAS Words:", countXWords);

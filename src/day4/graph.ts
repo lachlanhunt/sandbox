@@ -1,18 +1,21 @@
+import { D } from "@vitest/runner/dist/tasks-3ZnPj1LR";
+
 type Graph = string[];
 type Direction = (typeof directions)[number];
 type Coordinates = [number, number];
 
 const directions = ["N", "NE", "E", "SE", "S", "SW", "W", "NW"] as const;
 const SEARCH_WORD = "XMAS";
+const VALID_WORDS = ["SAM", "MAS"];
 
-export function* findXCoords(graph: Graph): Generator<Coordinates, void, unknown> {
+export function* findLetterCoords(graph: Graph, letter: string): Generator<Coordinates, void, unknown> {
     let rows = graph.length;
 
     for (let row = 0; row < rows; row++) {
         const line = graph[row];
         let col = -1;
 
-        while ((col = line.indexOf("X", col + 1)) !== -1) {
+        while ((col = line.indexOf(letter, col + 1)) !== -1) {
             yield [row, col];
         }
     }
@@ -67,7 +70,7 @@ function* take<T>(iterable: Iterable<T>, n: number): Generator<T> {
     }
 }
 
-export const countWordFromCoords = (graph: Graph, coords: Coordinates[]) => {
+export const countWordFromCoords = (graph: Graph, coords: Iterable<Coordinates>) => {
     let length = SEARCH_WORD.length; //?
     let count = 0;
     // Starting from the coordinates, get the sequence of coordinates in the direction
@@ -80,6 +83,43 @@ export const countWordFromCoords = (graph: Graph, coords: Coordinates[]) => {
             if (word === SEARCH_WORD) {
                 count++; //?
             }
+        }
+    }
+    return count;
+};
+
+export const getDiagonalWordsFromCoords = (graph: Graph, coordinates: Coordinates) => {
+    const adjacentDiagonals: Direction[] = ["NE", "SW", "NW", "SE"];
+    const [r, c] = coordinates;
+
+    const adjacentLetters = adjacentDiagonals.reduce((accum, direction) => {
+        const coordsInDirection = take(coordinatesFromDirection(graph, coordinates, direction), 2);
+        const list = [...coordsInDirection]; //?
+        const letters = list.map(([row, col]) => graph[row][col]); //?
+        const letter = letters[1] ?? ""; //?
+        //     ^?
+        accum.set(direction, letter);
+        return accum;
+    }, new Map<Direction, string>());
+
+    const centralLetter = graph[r][c];
+
+    return [
+        adjacentLetters.get("NE") + centralLetter + adjacentLetters.get("SW"),
+        adjacentLetters.get("NW") + centralLetter + adjacentLetters.get("SE"),
+    ];
+};
+
+export const validateXWords = (words: string[], validWords: string[]) => {
+    return words.every((word) => validWords.includes(word));
+};
+
+export const countValidXWordsFromCoords = (graph: Graph, coords: Iterable<Coordinates>) => {
+    let count = 0;
+    for (const coordinate of coords) {
+        const words = getDiagonalWordsFromCoords(graph, coordinate);
+        if (validateXWords(words, VALID_WORDS)) {
+            count++;
         }
     }
     return count;

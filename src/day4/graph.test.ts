@@ -1,10 +1,13 @@
 import { describe, expect, test } from "vitest";
 import {
     nextCoordinatesInDirection,
-    findXCoords,
+    findLetterCoords,
     coordinatesFromDirection,
     isOutOfBounds,
     countWordFromCoords,
+    getDiagonalWordsFromCoords,
+    validateXWords,
+    countValidXWordsFromCoords,
 } from "./graph";
 
 const sample = `MMMSXXMASM
@@ -20,7 +23,7 @@ MXMXAXMASX`.split("\n");
 
 describe("Find a Word", () => {
     test("should yield coordinates of X in sample", () => {
-        const coords = [...findXCoords(sample)];
+        const coords = [...findLetterCoords(sample, "X")];
         expect(coords).toEqual([
             [0, 4],
             [0, 5],
@@ -83,7 +86,29 @@ describe("Find a Word", () => {
     });
 
     test("should count all the words in sample", () => {
-        const count = countWordFromCoords(sample, [...findXCoords(sample)]);
+        const count = countWordFromCoords(sample, findLetterCoords(sample, "X"));
         expect(count).toEqual(18);
+    });
+
+    test("should get diagonal words from sample", () => {
+        const diagonalWords = getDiagonalWordsFromCoords(sample, [1, 2]);
+        expect(diagonalWords).toEqual(["SAM", "MAS"]);
+    });
+
+    test("should validate X-words", () => {
+        const words = ["SAM", "MAS"];
+        const validWords = ["SAM", "MAS"];
+        expect(validateXWords(words, validWords)).toEqual(true);
+    });
+
+    test("should invalidate X-words", () => {
+        const words = ["MAM", "MAS"];
+        const validWords = ["SAM", "MAS"];
+        expect(validateXWords(words, validWords)).toEqual(false);
+    });
+
+    test("should count valid X-words in sample", () => {
+        const count = countValidXWordsFromCoords(sample, findLetterCoords(sample, "A"));
+        expect(count).toEqual(9);
     });
 });
