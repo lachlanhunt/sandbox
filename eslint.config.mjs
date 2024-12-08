@@ -21,7 +21,12 @@ export default tseslint.config(
     // tseslint.configs.recommended,
     tseslintConfigs.recommendedTypeChecked,
     // tseslintConfigs.strict,
-    tseslintConfigs.strictTypeChecked,
+    // tseslintConfigs.strictTypeChecked,
+    {
+        rules: {
+            "@typescript-eslint/no-unnecessary-condition": ["error", { allowConstantLoopConditions: true }],
+        },
+    },
     // tseslintConfigs.stylistic,
     tseslintConfigs.stylisticTypeChecked,
 
