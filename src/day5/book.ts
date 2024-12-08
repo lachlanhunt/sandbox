@@ -3,13 +3,13 @@ export type Book = number[];
 
 export const processRules = (input: string[]) => {
     const values = input.map((line) => line.split("|").map(Number));
-    const groups = Object.groupBy(values, ([n]) => n) as Record<number, number[][]>;
+    const groups = Object.groupBy(values, ([n]) => n ?? NaN) as Record<number, number[][]>;
 
     const entries = Object.entries(groups);
 
     const result = entries.map<[number, Set<number>]>(([key, value]) => [
         Number(key),
-        new Set(value.flatMap<number>(([, page]) => page)),
+        new Set(value.flatMap<number>(([, page]) => page ?? NaN)),
     ]);
 
     return new Map(result);
@@ -19,7 +19,7 @@ export const processPages = (input: string[]) => {
     return input.map((line) => line.split(",").map(Number));
 };
 
-function* reverse<T>(arr: T[]): Generator<T> {
+function* reverse<T>(arr: T[]): Generator<T | undefined> {
     for (let i = arr.length - 1; i >= 0; i--) {
         yield arr[i];
     }
@@ -29,7 +29,7 @@ export const validatePageSequence = (rules: Rules, pages: Book) => {
     let forbidden = new Set<number>();
 
     for (const page of reverse(pages)) {
-        if (forbidden.has(page)) {
+        if (page === undefined || forbidden.has(page)) {
             return false;
         }
         forbidden = forbidden.union(rules.get(page) ?? new Set());
