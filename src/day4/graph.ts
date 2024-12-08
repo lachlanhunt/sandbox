@@ -7,7 +7,7 @@ const SEARCH_WORD = "XMAS";
 const VALID_WORDS = ["SAM", "MAS"];
 
 export function* findLetterCoords(graph: Graph, letter: string): Generator<Coordinates, void, unknown> {
-    let rows = graph.length;
+    const rows = graph.length;
 
     for (let row = 0; row < rows; row++) {
         const line = graph[row];
@@ -47,17 +47,16 @@ export const isOutOfBounds = (graph: Graph, [row, col]: Coordinates) => {
 export function* coordinatesFromDirection(graph: Graph, [row, col]: Coordinates, direction: Direction) {
     let coords: Coordinates = [row, col];
 
-    do {
-        if (isOutOfBounds(graph, coords)) {
-            break;
-        }
+    while (!isOutOfBounds(graph, coords)) {
         yield coords;
-    } while ((coords = nextCoordinatesInDirection(coords, direction)));
+
+        coords = nextCoordinatesInDirection(coords, direction);
+    }
 }
 
 function* take<T>(iterable: Iterable<T>, n: number): Generator<T> {
     let i = 0;
-    let iterator = iterable[Symbol.iterator]();
+    const iterator = iterable[Symbol.iterator]();
     while (i < n) {
         const next = iterator.next();
         if (next.done) {
@@ -69,7 +68,7 @@ function* take<T>(iterable: Iterable<T>, n: number): Generator<T> {
 }
 
 export const countWordFromCoords = (graph: Graph, coords: Iterable<Coordinates>) => {
-    let length = SEARCH_WORD.length;
+    const length = SEARCH_WORD.length;
     let count = 0;
     // Starting from the coordinates, get the sequence of coordinates in the direction
     for (const coordinate of coords) {

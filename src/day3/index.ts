@@ -1,8 +1,8 @@
 // cat src/day3/sample | yarn node --loader ts-node/esm src/day3/index.ts
 // cat src/day3/input | yarn node --loader ts-node/esm src/day3/index.ts
 
-import { readLines } from "../index";
-import { evaluateMulExpressions, findMulExpressions, splitDoAndDontInstructions } from "./mul";
+import { readLines } from "../index.js";
+import { evaluateMulExpressions, findMulExpressions, splitDoAndDontInstructions } from "./mul.js";
 
 const lines = await readLines();
 

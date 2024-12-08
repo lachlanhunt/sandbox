@@ -1,8 +1,8 @@
 // cat src/day5/sample | yarn node --loader ts-node/esm src/day5/index.ts
 // cat src/day5/input | yarn node --loader ts-node/esm src/day5/index.ts
 
-import { readLines } from "../index";
-import { getInvalidBooks, getMiddlePages, getValidBooks, processPages, processRules, sortPages } from "./book";
+import { readLines } from "../index.js";
+import { getInvalidBooks, getMiddlePages, getValidBooks, processPages, processRules, sortPages } from "./book.js";
 
 const input = await readLines();
 

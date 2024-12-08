@@ -1,7 +1,7 @@
 // cat src/day1/sample | yarn node --loader ts-node/esm src/day1/index.ts
 // cat src/day1/input |syarn node --loader ts-node/esm src/day1/index.ts
 
-import { readLines } from "../index";
+import { readLines } from "../index.ts";
 
 const lines = await readLines();
 
