@@ -5,7 +5,7 @@
         /* Base Options: */
         "esModuleInterop": true,
         "skipLibCheck": true,
-        "target": "ESNext",
+        "target": "ES2024",
         "allowJs": true,
         "resolveJsonModule": true,
         "moduleDetection": "force",
@@ -16,10 +16,10 @@
         "noImplicitOverride": true,
         "noImplicitReturns": true,
         "noPropertyAccessFromIndexSignature": true,
-        "noUncheckedIndexedAccess": true,
+        // "noUncheckedIndexedAccess": true,
         /* Transpiling with TypeScript: */
-        "moduleResolution": "NodeNext",
-        "module": "NodeNext",
+        "moduleResolution": "Node",
+        "module": "ESNext",
         "outDir": "dist",
         "sourceMap": true,
         "lib": ["ESNext"],
