@@ -3,9 +3,8 @@
 
 console.log("Day 6: Testing");
 
-/*
 import { readLines } from "../index.js";
-import { findStartingPosition, walk } from "./guard.js";
+import { countLoops, findStartingPosition, walk } from "./guard.js";
 
 const input = await readLines();
 
@@ -14,10 +13,12 @@ console.log("Starting Position:", startingPosition);
 
 const takeAWalk = [...walk(input, startingPosition)];
 
-const uniquePositions = new Set(takeAWalk.map(([row, col]) => `${row},${col}`));
+const uniquePositions = new Set(takeAWalk.map(([[row, col]]) => `${row},${col}`));
 
 const part1 = uniquePositions.size;
 
+const part2 = countLoops(input, startingPosition);
+
 console.log("Part 1 Result:", part1);
-// console.log("Part 2 Result:", part2);
+console.log("Part 2 Result:", part2);
 /**/
