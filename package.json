@@ -1,0 +1,49 @@
+{
+    "name": "sandbox",
+    "version": "0.1.0",
+    "packageManager": "yarn@4.5.3",
+    "author": "Lachlan Hunt <lachlan.hunt@lachy.id.au> (https://lachy.id.au)",
+    "license": "MIT",
+    "scripts": {
+        "postinstall": "husky install",
+        "prepack": "pinst --disable",
+        "postpack": "pinst --enable",
+        "test": "vitest",
+        "typecheck": "tsc --noEmit",
+        "build": "tsc --project tsconfig.build.json",
+        "sdks": "yarn dlx @yarnpkg/sdks vscode"
+    },
+    "type": "module",
+    "main": "./dist/index.js",
+    "types": "./dist/index.d.ts",
+    "files": [
+        "dist/"
+    ],
+    "devDependencies": {
+        "@babel/core": "^7.26.0",
+        "@babel/preset-env": "^7.26.0",
+        "@babel/preset-typescript": "^7.26.0",
+        "@eslint/js": "^9.16.0",
+        "@types/node": "^22.10.1",
+        "@typescript-eslint/parser": "^8.17.0",
+        "@vitest/runner": "^2.1.8",
+        "@vitest/snapshot": "^2.1.8",
+        "eslint": "^9.16.0",
+        "eslint-config-prettier": "^9.1.0",
+        "eslint-import-resolver-typescript": "^3.7.0",
+        "eslint-plugin-import": "^2.31.0",
+        "eslint-plugin-prettier": "^5.2.1",
+        "globals": "^15.13.0",
+        "husky": "^9.1.7",
+        "lint-staged": "^15.2.10",
+        "pinst": "^3.0.0",
+        "prettier": "3.4.2",
+        "ts-node": "^10.9.2",
+        "typescript": "^5.7.2",
+        "typescript-eslint": "^8.17.0",
+        "vitest": "^2.1.8"
+    },
+    "lint-staged": {
+        "**/*": "prettier --write --ignore-unknown"
+    }
+}

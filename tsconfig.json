@@ -1,0 +1,30 @@
+{
+    "include": ["*.ts", "src/**/*.ts", "eslint.config.mjs"],
+    "exclude": ["**/dist/**/*"],
+    "compilerOptions": {
+        /* Base Options: */
+        "esModuleInterop": true,
+        "skipLibCheck": true,
+        "target": "ESNext",
+        "allowJs": true,
+        "resolveJsonModule": true,
+        "moduleDetection": "force",
+        "isolatedModules": true,
+        /* Strictness */
+        "strict": true,
+        "exactOptionalPropertyTypes": true,
+        "noImplicitOverride": true,
+        "noImplicitReturns": true,
+        "noPropertyAccessFromIndexSignature": true,
+        "noUncheckedIndexedAccess": true,
+        /* Transpiling with TypeScript: */
+        "moduleResolution": "NodeNext",
+        "module": "NodeNext",
+        "outDir": "dist",
+        "sourceMap": true,
+        "lib": ["ESNext"],
+        // Include the .d.ts files for the library
+        "declaration": true,
+        "types": ["vitest/globals"]
+    }
+}
