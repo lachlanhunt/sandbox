@@ -2,7 +2,7 @@
 // cat src/day2/input | yarn node --loader ts-node/esm src/day2/index.ts
 
 import { readLines } from "../index.js";
-import { getLevelsFromLines, isReportSafe } from "./reports";
+import { getLevelsFromLines, isReportSafe } from "./reports.js";
 
 const lines = await readLines();
 
