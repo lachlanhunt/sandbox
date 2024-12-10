@@ -29,6 +29,11 @@ export default tseslint.config(
     },
     // tseslintConfigs.stylistic,
     tseslintConfigs.stylisticTypeChecked,
+    {
+        rules: {
+            "@typescript-eslint/consistent-type-definitions": "off",
+        },
+    },
 
     // eslint-disable-next-line @typescript-eslint/no-unsafe-argument, @typescript-eslint/no-unsafe-member-access
     importPlugin.flatConfigs.recommended,
