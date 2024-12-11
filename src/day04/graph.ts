@@ -72,7 +72,6 @@ export const countWordFromCoords = (graph: Graph, coords: Iterable<Coordinates>)
     let count = 0;
     // Starting from the coordinates, get the sequence of coordinates in the direction
     for (const coordinate of coords) {
-        coordinate;
         for (const direction of directions) {
             const coordsInDirection = take(coordinatesFromDirection(graph, coordinate, direction), length);
             const word = [...coordsInDirection].map(([row, col]) => graph[row][col]).join("");
