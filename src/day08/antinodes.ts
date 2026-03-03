@@ -1,3 +1,5 @@
+import { combination } from "generator-utilities";
+
 export type Frequency = string & {};
 export type Coordinates = [number, number];
 export type Locations = Coordinates[] | Iterable<Coordinates>;
@@ -22,7 +24,7 @@ export const parseMap: (map: Frequency[]) => LocationMap = (input) => {
 
 const isArray = <T>(value: unknown): value is T[] => Array.isArray(value);
 
-export function* combination<T>(set: ArrayLike<T> | Iterable<T>, size: number) {
+export function* combination2<T>(set: ArrayLike<T> | Iterable<T>, size: number) {
     const src = isArray<T>(set) ? set : Array.from(set);
 
     // Clamp value between 1 and the length of the source array.
@@ -72,10 +74,23 @@ export const isInBounds = (map: Frequency[], [row, col]: Coordinates) => {
 };
 
 export function* getAntinodesFromAntennas(antennas: Locations, predicate: (value: Coordinates) => boolean) {
-    for (const [antenna1, antenna2] of combination(antennas, 2)) {
+    for (const [antenna1, antenna2] of combination2(antennas, 2)) {
         const [a, b] = calculateAntinodes(antenna1, antenna2);
         if (predicate(a)) yield a;
         if (predicate(b)) yield b;
+    }
+}
+
+export function* getAllAntinodesInLine([x1, y1]: Coordinates, [x2, y2]: Coordinates) {
+    const dx = x2 - x1;
+    const dy = y2 - y1;
+
+    const steps = Math.max(Math.abs(dx), Math.abs(dy));
+    const stepX = dx / steps;
+    const stepY = dy / steps;
+
+    for (let i = 1; i < steps; i++) {
+        yield [x1 + stepX * i, y1 + stepY * i] as Coordinates;
     }
 }
 

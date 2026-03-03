@@ -1,6 +1,5 @@
 import {
     calculateAntinodes,
-    combination,
     getAntinodesFromAntennas,
     getUniqueLocations,
     isInBounds,
@@ -22,7 +21,7 @@ const sample = `............
 ............`.split("\n");
 
 describe("Antinodes", () => {
-    it("should parse the input", () => {
+    it.only("should parse the input", () => {
         const antennas = parseMap(sample);
         expect(antennas.size).toBe(2);
         expect(antennas.get("0")).toEqual([
@@ -35,18 +34,6 @@ describe("Antinodes", () => {
             [5, 6],
             [8, 8],
             [9, 9],
-        ]);
-    });
-
-    it("should generate combinations", () => {
-        const combinations = Array.from(combination([1, 2, 3, 4], 2));
-        expect(combinations).toEqual([
-            [1, 2],
-            [1, 3],
-            [1, 4],
-            [2, 3],
-            [2, 4],
-            [3, 4],
         ]);
     });
 

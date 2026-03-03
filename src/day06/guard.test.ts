@@ -49,7 +49,7 @@ describe("Guard", () => {
     it("should walk until it reaches #", () => {
         const startingPosition = findStartingPosition(sample, "^");
         const takeAWalk = [...walk(sample, startingPosition)]; //?
-        console.log(takeAWalk);
+        // console.log(takeAWalk);
         expect(takeAWalk).toEqual([
             [[6, 4], 1],
             [[5, 4], 1],

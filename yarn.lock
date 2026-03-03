@@ -3319,6 +3319,12 @@ __metadata:
   languageName: node
   linkType: hard
 
+"generator-utilities@portal:/Users/lachlanhunt/Sites/generator-utilities::locator=sandbox%40workspace%3A.":
+  version: 0.0.0-use.local
+  resolution: "generator-utilities@portal:/Users/lachlanhunt/Sites/generator-utilities::locator=sandbox%40workspace%3A."
+  languageName: node
+  linkType: soft
+
 "gensync@npm:^1.0.0-beta.2":
   version: 1.0.0-beta.2
   resolution: "gensync@npm:1.0.0-beta.2"
@@ -4958,6 +4964,7 @@ __metadata:
     eslint-import-resolver-typescript: "npm:^3.7.0"
     eslint-plugin-import: "npm:^2.31.0"
     eslint-plugin-prettier: "npm:^5.2.1"
+    generator-utilities: "npm:^0.2.1"
     globals: "npm:^15.13.0"
     husky: "npm:^9.1.7"
     lint-staged: "npm:^15.2.10"

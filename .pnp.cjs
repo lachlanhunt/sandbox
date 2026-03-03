@@ -40,6 +40,7 @@ const RAW_RUNTIME_STATE =
           ["eslint-import-resolver-typescript", "virtual:0e554f847bdcc47d95fa4f0b58d14c72bdaf2790714632456ecd24d610542efe35f832e63d535e922d8a9727785f98446d4dc0d0ee8e6980948591e23a4371d6#npm:3.7.0"],\
           ["eslint-plugin-import", "virtual:0e554f847bdcc47d95fa4f0b58d14c72bdaf2790714632456ecd24d610542efe35f832e63d535e922d8a9727785f98446d4dc0d0ee8e6980948591e23a4371d6#npm:2.31.0"],\
           ["eslint-plugin-prettier", "virtual:0e554f847bdcc47d95fa4f0b58d14c72bdaf2790714632456ecd24d610542efe35f832e63d535e922d8a9727785f98446d4dc0d0ee8e6980948591e23a4371d6#npm:5.2.1"],\
+          ["generator-utilities", "portal:/Users/lachlanhunt/Sites/generator-utilities::locator=sandbox%40workspace%3A."],\
           ["globals", "npm:15.13.0"],\
           ["husky", "npm:9.1.7"],\
           ["lint-staged", "npm:15.2.10"],\
@@ -4743,6 +4744,15 @@ const RAW_RUNTIME_STATE =
         "linkType": "HARD"\
       }]\
     ]],\
+    ["generator-utilities", [\
+      ["portal:/Users/lachlanhunt/Sites/generator-utilities::locator=sandbox%40workspace%3A.", {\
+        "packageLocation": "../generator-utilities/",\
+        "packageDependencies": [\
+          ["generator-utilities", "portal:/Users/lachlanhunt/Sites/generator-utilities::locator=sandbox%40workspace%3A."]\
+        ],\
+        "linkType": "SOFT"\
+      }]\
+    ]],\
     ["gensync", [\
       ["npm:1.0.0-beta.2", {\
         "packageLocation": "./.yarn/cache/gensync-npm-1.0.0-beta.2-224666d72f-17d8333460.zip/node_modules/gensync/",\
@@ -6520,6 +6530,7 @@ const RAW_RUNTIME_STATE =
           ["eslint-import-resolver-typescript", "virtual:0e554f847bdcc47d95fa4f0b58d14c72bdaf2790714632456ecd24d610542efe35f832e63d535e922d8a9727785f98446d4dc0d0ee8e6980948591e23a4371d6#npm:3.7.0"],\
           ["eslint-plugin-import", "virtual:0e554f847bdcc47d95fa4f0b58d14c72bdaf2790714632456ecd24d610542efe35f832e63d535e922d8a9727785f98446d4dc0d0ee8e6980948591e23a4371d6#npm:2.31.0"],\
           ["eslint-plugin-prettier", "virtual:0e554f847bdcc47d95fa4f0b58d14c72bdaf2790714632456ecd24d610542efe35f832e63d535e922d8a9727785f98446d4dc0d0ee8e6980948591e23a4371d6#npm:5.2.1"],\
+          ["generator-utilities", "portal:/Users/lachlanhunt/Sites/generator-utilities::locator=sandbox%40workspace%3A."],\
           ["globals", "npm:15.13.0"],\
           ["husky", "npm:9.1.7"],\
           ["lint-staged", "npm:15.2.10"],\
